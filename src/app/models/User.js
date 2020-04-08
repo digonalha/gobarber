@@ -34,7 +34,9 @@ class User extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'avatar_id' }); // hasOne, hasMany, belongsToMany (modos de relacionamento entre tabelas)
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
+    // as: alias que vai ter no join
+    // hasOne, hasMany, belongsToMany (modos de relacionamento entre tabelas)
   }
 
   // retorna true caso as senhas forem as mesmas;;
