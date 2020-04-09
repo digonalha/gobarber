@@ -1,5 +1,6 @@
 // responsavel pelo mapeamento entre os models e o banco de dados
 import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
 import User from '../app/models/User';
 import File from '../app/models/File';
 import Appointment from '../app/models/Appointment';
@@ -11,6 +12,7 @@ const models = [User, File, Appointment];
 class Database {
   constructor() {
     this.init();
+    this.mongo();
   }
 
   init() {
@@ -23,6 +25,18 @@ class Database {
         // agora mapeamos as relações entre tabelas
         (model) => model.associate && model.associate(this.connection.models)
       );
+  }
+
+  // criando conexão com o mongoDB
+  mongo() {
+    this.mongoConnection = mongoose.connect(
+      'mongodb://192.168.99.100/gobarber',
+      {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+        useUnifiedTopology: true,
+      }
+    );
   }
 }
 

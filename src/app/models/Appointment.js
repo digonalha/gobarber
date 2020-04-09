@@ -8,7 +8,6 @@ class Appointment extends Model {
     super.init(
       // super seria o base que utilizamos(quem herdamos) do c#
       {
-        name: Sequelize.STRING,
         date: Sequelize.DATE,
         canceled_at: Sequelize.DATE,
       },
