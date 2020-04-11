@@ -1,7 +1,7 @@
 // como necessario utilizar pelo sequelize-cli, utilizar o commonjs
 module.exports = {
   dialect: 'postgres',
-  host: '192.168.99.100',
+  host: '192.168.0.9',
   username: 'postgres',
   password: 'docker',
   database: 'gobarber',
