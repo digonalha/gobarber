@@ -31,9 +31,8 @@ class NotificationController {
       },
       {
         /*
-          necessario colocar esse
-          new para ser retornar o
-          registro ja atualizado
+          necessario colocar esse new para
+          ser retornar o registro ja atualizado
         */
         new: true,
       }
