@@ -6,6 +6,7 @@ import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import NotificationController from './app/controllers/NotificationController';
 import ScheduleController from './app/controllers/ScheduleController';
+import AvailableController from './app/controllers/AvailableController';
 import FileController from './app/controllers/FileController';
 import authMiddleware from './app/middlewares/auth';
 import multerConfig from './config/multer';
@@ -20,6 +21,8 @@ routes.get('/providers', ProviderController.index);
 
 // o middleware só vai funcionar nas rotas abaixo dele
 routes.use(authMiddleware);
+
+routes.get('/providers/:providerId/available', AvailableController.index);
 
 routes.get('/appointments', AppointmentController.index);
 routes.post('/appointments', AppointmentController.store);

@@ -31,8 +31,13 @@ class Queue {
   processQueue() {
     jobs.forEach((job) => {
       const { bee, handle } = this.queues[job.key];
-      bee.process(handle);
+      // dentro do on ficam os eventos do processo. failed e o evento de falha (obvio)
+      bee.on('failed', this.handleFailure).process(handle);
     });
+  }
+
+  handleFailure(job, err) {
+    console.log(`Queue ${job.queue.name}: FAILED`, err);
   }
 }
 

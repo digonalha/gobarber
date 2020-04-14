@@ -1,7 +1,15 @@
 import * as Yup from 'yup';
 // date-fns: biblioteca pra trabalhar com datar no javascript
-import { startOfHour, parseISO, isBefore, format, subHours } from 'date-fns';
+import {
+  startOfHour,
+  endOfHour,
+  parseISO,
+  isBefore,
+  format,
+  subHours,
+} from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import { Op } from 'sequelize';
 import Appointment from '../models/Appointment';
 import File from '../models/File';
 import User from '../models/User';
@@ -37,6 +45,7 @@ class AppointmentController {
 
     // checando se a data é anterior a data atual
     const hourStart = startOfHour(parseISO(date));
+    const hourEnd = endOfHour(parseISO(date));
 
     if (isBefore(hourStart, new Date())) {
       return res.status(400).json({ error: 'Past dates are not permited' });
@@ -48,7 +57,9 @@ class AppointmentController {
       where: {
         provider_id,
         canceled_at: null,
-        date: hourStart,
+        date: {
+          [Op.between]: [hourStart, hourEnd],
+        },
       },
     });
 
