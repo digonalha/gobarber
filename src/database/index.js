@@ -29,14 +29,11 @@ class Database {
 
   // criando conexão com o mongoDB
   mongo() {
-    this.mongoConnection = mongoose.connect(
-      'mongodb://192.168.99.100/gobarber',
-      {
-        useNewUrlParser: true,
-        useFindAndModify: true,
-        useUnifiedTopology: true,
-      }
-    );
+    this.mongoConnection = mongoose.connect('mongodb://localhost/gobarber', {
+      useNewUrlParser: true,
+      useFindAndModify: true,
+      useUnifiedTopology: true,
+    });
   }
 }
 
