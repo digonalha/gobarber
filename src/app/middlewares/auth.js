@@ -9,8 +9,6 @@ export default async (req, res, next) => {
     return res.status(401).json({ error: 'Token not provided' });
   }
 
-  console.log(authHeader);
-
   const [, token] = authHeader.split(' ');
 
   try {

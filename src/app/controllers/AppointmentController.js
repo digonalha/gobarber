@@ -94,7 +94,7 @@ class AppointmentController {
         canceled_at: null,
       },
       order: ['date'], // ordenando pela data
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past', 'cancelable'],
       limit: 20, // qtd de registros buscados
       offset: (page - 1) * 20, // pagina
       include: [
